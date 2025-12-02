@@ -14,7 +14,9 @@ function draw() {
 
   circle(300, 115, 30);
   rect(100, 100, 200, 30);
+  pop();
 
+  push();
   fill("yellow");
   noStroke();
   circle(100, 215, 30);
