@@ -1,13 +1,27 @@
-export let platform = {
-    x: 250,
-    y: 250,
-    w: 80,
-    h: 20,
+//export let platform = {
+// x: 250,
+// y: 250,
+// w: 80,
+// h: 20,
 
-    draw() {
-        push();
-        fill("blue");
-        rect(this.x, this.y, this.w, this.h);
-        pop();
-    },
-};
+function draw() {
+  createCanvas(500, 500);
+
+  push();
+  fill("green");
+  noStroke();
+  circle(100, 115, 30);
+
+  circle(300, 115, 30);
+  rect(100, 100, 200, 30);
+  pop();
+
+  push();
+  fill("yellow");
+  noStroke();
+  circle(100, 215, 30);
+
+  circle(300, 215, 30);
+  rect(100, 200, 200, 30);
+  pop();
+}
