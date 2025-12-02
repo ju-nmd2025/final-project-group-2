@@ -27,3 +27,5 @@ function draw() {
   line(190, 236, 195, 236);
   line(210, 236, 215, 236);
 }
+
+console.log("Hello World");
