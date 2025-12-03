@@ -10,17 +10,8 @@ export let platform = {
     noStroke();
     circle(this.x, this.y + 5, this.h);
 
-    circle(this.x + this.w, this.y + 5, this.h);
+    circle(this.x + 75, this.y + 5, this.h);
     rect(this.x, this.y, this.w, this.h);
     pop();
   },
 };
-
-function setup() {
-  createCanvas(400, 400);
-}
-
-function draw() {
-  background(220);
-  platform.draw();
-}

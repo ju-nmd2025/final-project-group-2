@@ -1,4 +1,4 @@
-let doodle = {
+export let doodle = {
   x: 200,
   y: 175,
   w: 50,
@@ -28,12 +28,3 @@ let doodle = {
     line(this.x + 10, this.y + 61, this.x + 15, this.y + 61);
   },
 };
-
-function setup() {
-  createCanvas(400, 400);
-}
-
-function draw() {
-  background(220);
-  doodle.draw();
-}

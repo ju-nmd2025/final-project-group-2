@@ -1,33 +1,55 @@
-import { character } from "./character";
+import doodle from "doodle";
 import platform from "platform";
 
 function setup() {
-  createCanvas(400, 600);
+  createCanvas(600, 800);
 }
 
 //obstacle/monster/kill
 
 function draw() {
-  background(100, 100, 100);
+  background(255, 255, 255);
 
-  character.draw();
+  if (keyIsDown(65) === true) {
+    doodle.x -= 10;
+  }
+
+  if (keyIsDown(68) === true) {
+    doodle.x += 10;
+  }
+
+  doodle.draw();
   platform.draw();
 
-  platform.y += 10;
+  platform.y += 5;
   if (platform.y + platform.h < 0) {
     platform.y = 500;
   }
 
-  if (character.y + character.h === platform.y) {
-    character.y = character.y + 10;
+  doodle.y += 5;
+  if (doodle.y + doodle.h < 0) {
+    doodle.y = 500;
   }
 
-  // Floor
-  line(0, 300, 400, 300);
-}
-
-function keyPressed() {
-  if (character.y + character.h === 300) {
-    character.y -= 80;
+  if (doodle.y >= 850) {
+    doodle.y = 0;
   }
+
+  if (doodle.x + doodle.w <= 0) {
+    doodle.x = 599;
+  }
+  if (doodle.x >= 600) {
+    doodle.x = 1;
+
+    // Floor/death
+    line(0, 799, 600, 799);
+  }
+
+  //function keyPressed() {
+  //if (key === "a") {
+  //   doodle.x -= 5;
+  // } else if (key === "d") {
+  //   doodle.x += 5;
+  // }
+  //}
 }
