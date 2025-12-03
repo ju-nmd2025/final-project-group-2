@@ -1,5 +1,5 @@
 import doodle from "doodle";
-import platform from "platform";
+import platform1 from "platform";
 
 function setup() {
   createCanvas(600, 800);
@@ -19,11 +19,11 @@ function draw() {
   }
 
   doodle.draw();
-  platform.draw();
+  platform1.draw();
 
-  platform.y += 5;
-  if (platform.y + platform.h < 0) {
-    platform.y = 500;
+  platform1.y += 5;
+  if (platform1.y + platform1.h < 0) {
+    platform1.y = 500;
   }
 
   doodle.y += 5;
@@ -44,12 +44,4 @@ function draw() {
     // Floor/death
     line(0, 799, 600, 799);
   }
-
-  //function keyPressed() {
-  //if (key === "a") {
-  //   doodle.x -= 5;
-  // } else if (key === "d") {
-  //   doodle.x += 5;
-  // }
-  //}
 }
