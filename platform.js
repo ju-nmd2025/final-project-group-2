@@ -1,10 +1,4 @@
-//export let platform = {
-// x: 250,
-// y: 250,
-// w: 80,
-// h: 20,
-
-let platform = {
+export let platform = {
   x: 100,
   y: 100,
   w: 75,
@@ -14,19 +8,10 @@ let platform = {
     push();
     fill("green");
     noStroke();
-    circle(this.x, this.y + 15, this.w - 35);
+    circle(this.x, this.y + 5, this.h);
 
-    circle(300, 115, 30);
-    rect(100, 100, 200, 30);
-    pop();
-
-    push();
-    fill("yellow");
-    noStroke();
-    circle(100, 215, 30);
-
-    circle(300, 215, 30);
-    rect(100, 200, 200, 30);
+    circle(this.x + this.w, this.y + 5, this.h);
+    rect(this.x, this.y, this.w, this.h);
     pop();
   },
 };
