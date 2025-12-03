@@ -31,8 +31,8 @@ function draw() {
     doodle.y = 500;
   }
 
-  if (doodle.y >= 850) {
-    doodle.y = 0;
+  if (doodle.y >= 800) {
+    doodle.y = -86;
   }
 
   if (doodle.x + doodle.w <= 0) {
