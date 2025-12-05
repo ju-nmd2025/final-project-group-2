@@ -35,10 +35,10 @@ function draw() {
     doodle.y = -86;
   }
 
-  if (doodle.x + doodle.w <= 0) {
-    doodle.x = 599;
+  if (doodle.x <= 0) {
+    doodle.x = 600;
   }
-  if (doodle.x >= 600) {
+  if (doodle.x >= 601) {
     doodle.x = 1;
 
     // Floor/death
