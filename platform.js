@@ -1,4 +1,4 @@
-export let platform1 = {
+export let platform = {
   x: 100,
   y: 100,
   w: 75,

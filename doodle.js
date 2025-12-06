@@ -3,6 +3,7 @@ export let doodle = {
   y: 175,
   w: 50,
   h: 86,
+  vy: 0,
 
   draw() {
     noStroke();
