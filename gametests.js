@@ -4,7 +4,7 @@ import platform from "platform";
 let platforms = [];
 const GRAVITY = 8;
 const JUMP = -300;
-const NUM_PLATFORMS = 15;
+const NUM_PLATFORMS = 10;
 const SPEED = 10;
 
 function setup() {
@@ -18,7 +18,45 @@ function setup() {
   }
 }
 
+function mouseClicked() {
+  if (gameState === 0) {
+    if (mouseX > 200 && mouseX < 400 && mouseY > 350 && mouseY < 450) {
+      gameState = 1;
+    }
+  }
+  if (gameState === 2) {
+    if (mouseX > 200 && mouseX < 400 && mouseY > 350 && mouseY < 450) {
+      gameReset();
+    }
+  }
+}
+
+let gameState = 0;
+
 function draw() {
+  background(255, 255, 255);
+  if (gameState === 0) {
+    drawGameStart();
+  } else if (gameState === 1) {
+    drawGamePlay();
+  } else if (gameState === 2) {
+    drawGameEnd();
+  }
+}
+
+function drawGameStart() {
+  push();
+  fill(255);
+  rect(200, 350, 200, 100);
+  pop();
+  push();
+  textSize(22);
+  fill(0);
+  text("Press Start", 246, 406);
+  pop();
+}
+
+function drawGamePlay() {
   background(255, 255, 255);
 
   if (keyIsDown(65) === true) {
@@ -56,9 +94,7 @@ function draw() {
   }
   doodle.draw();
   if (doodle.y >= 800) {
-    doodle.y = 200;
-    doodle.vy = 0;
-    doodle.x = 200;
+    gameState = gameState + 1;
   }
 
   if (doodle.x <= -doodle.w) {
@@ -66,8 +102,28 @@ function draw() {
   }
   if (doodle.x >= 601) {
     doodle.x = 1;
-
-    // Floor/death
-    line(0, 799, 600, 799);
   }
+}
+
+function drawGameEnd() {
+  push();
+  textSize(75);
+  fill("red");
+  text("GAME OVER", 70, 250);
+  pop();
+  push();
+  fill("green");
+  rect(200, 350, 200, 100);
+  pop();
+  push();
+  textSize(22);
+  fill("white");
+  text("Restart", 262, 406);
+  pop();
+}
+
+function gameReset() {
+  gameState = 0;
+  doodle.y = 300;
+  doodle.x = 275;
 }
