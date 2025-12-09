@@ -1,6 +1,6 @@
 export let doodle = {
-  x: 200,
-  y: 175,
+  x: 275,
+  y: 400,
   w: 50,
   h: 86,
   vy: 0,

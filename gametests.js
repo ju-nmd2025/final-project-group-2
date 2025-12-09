@@ -2,7 +2,7 @@ import doodle from "doodle";
 import platform from "platform";
 
 let platforms = [];
-const GRAVITY = 8;
+let GRAVITY = 8;
 const JUMP = -300;
 const NUM_PLATFORMS = 10;
 const SPEED = 10;
@@ -34,7 +34,7 @@ function mouseClicked() {
 let gameState = 0;
 
 function draw() {
-  background(255, 255, 255);
+  background("lightblue");
   if (gameState === 0) {
     drawGameStart();
   } else if (gameState === 1) {
@@ -57,7 +57,7 @@ function drawGameStart() {
 }
 
 function drawGamePlay() {
-  background(255, 255, 255);
+  background("lightblue");
 
   if (keyIsDown(65) === true) {
     doodle.x -= SPEED;
