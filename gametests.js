@@ -62,9 +62,15 @@ function drawGamePlay() {
   if (keyIsDown(65) === true) {
     doodle.x -= SPEED;
   }
+  if (keyIsDown(37) === true) {
+    doodle.x -= SPEED;
+  }
 
   if (keyIsDown(68) === true) {
     doodle.x += SPEED;
+  }
+  if (keyIsDown(39) === true) {
+    doodle.x -= SPEED;
   }
 
   doodle.vy = GRAVITY;
