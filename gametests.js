@@ -14,7 +14,16 @@ function setup() {
     let x = random(0, 600 - 75);
     let y = i * (800 / NUM_PLATFORMS);
 
-    platforms.push(new Platform(x, y, 75, 10));
+    let type = 0;
+    let r = random(0, 100);
+
+    if (r < 10) {
+      type = 1;
+    } else if (r < 20) {
+      type = 2;
+    }
+
+    platforms.push(new Platform(x, y, 75, 10, type));
   }
 }
 
@@ -45,6 +54,19 @@ function draw() {
 }
 
 function drawGameStart() {
+  push();
+  textSize(50);
+  fill(0, 0, 0);
+  text("doodledash.io", 140, 200);
+  pop();
+  push();
+  textSize(20);
+  fill(0, 0, 0);
+
+  text("Red platforms kill you, brown platforms", 140, 600);
+  text("will break, and green will make you jump!", 130, 640);
+  text("Use W + D or the left and right arrow keys to move!", 85, 680);
+  pop();
   push();
   fill(255);
   rect(200, 350, 200, 100);
@@ -82,22 +104,35 @@ function drawGamePlay() {
     p.draw();
     p.y += 5;
 
-    if (doodle.vy > 0) {
+    if (doodle.vy > 0 && p.broken === false) {
       if (
         doodle.x + doodle.w > p.x &&
         doodle.x < p.x + p.w &&
         doodle.y + doodle.h > p.y &&
         doodle.y + doodle.h < p.y + p.h + GRAVITY + 5
       ) {
-        doodle.y = doodle.y + JUMP;
+        if (p.type === 0) {
+          doodle.y = doodle.y + JUMP;
+        } else if (p.type === 1) {
+          gameState = 2;
+        } else if (p.type === 2) {
+          p.broken = true;
+        }
       }
     }
 
     if (p.y > 800) {
       p.y = -10;
       p.x = random(0, 600 - 75);
+      p.broken = false;
+
+      let r = random(0, 100);
+      if (r < 10) p.type = 1;
+      else if (r < 20) p.type = 2;
+      else p.type = 0;
     }
   }
+
   doodle.draw();
   if (doodle.y >= 800) {
     gameState = gameState + 1;
