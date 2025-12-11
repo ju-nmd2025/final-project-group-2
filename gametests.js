@@ -7,6 +7,8 @@ let GRAVITY = 8;
 const JUMP = -300;
 const NUM_PLATFORMS = 10;
 const SPEED = 10;
+let startTime;
+let finalScore;
 
 function setup() {
   createCanvas(600, 800);
@@ -32,6 +34,7 @@ function mouseClicked() {
   if (gameState === 0) {
     if (mouseX > 200 && mouseX < 400 && mouseY > 350 && mouseY < 450) {
       gameState = 1;
+      startTime = millis();
     }
   }
   if (gameState === 2) {
@@ -108,6 +111,7 @@ function drawGamePlay() {
         if (p.type === 0) {
           doodle.y = doodle.y + JUMP;
         } else if (p.type === 1) {
+          calculateScore();
           gameState = 2;
         } else if (p.type === 2) {
           p.broken = true;
@@ -129,6 +133,7 @@ function drawGamePlay() {
 
   doodle.draw();
   if (doodle.y >= 800) {
+    calculateScore();
     gameState = gameState + 1;
   }
 
@@ -147,14 +152,22 @@ function drawGameEnd() {
   text("GAME OVER", 70, 250);
   pop();
   push();
-  fill("green");
-  rect(200, 350, 200, 100);
+  textSize(40);
+  fill(0);
+  text("Score: " + finalScore, 225, 550);
   pop();
   pressReset.draw();
 }
-
+function calculateScore() {
+  let endTime = millis();
+  let durationMs = endTime - startTime;
+  let durationSec = durationMs / 1000;
+  finalScore = durationSec.toFixed(0) * 13;
+}
 function gameReset() {
   gameState = 0;
   doodle.y = 300;
   doodle.x = 275;
+
+  startTime = 0;
 }
