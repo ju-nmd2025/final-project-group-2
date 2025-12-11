@@ -1,5 +1,6 @@
 import doodle from "doodle";
 import platform from "platform";
+import { Button } from "screens";
 
 let platforms = [];
 let GRAVITY = 8;
@@ -63,19 +64,12 @@ function drawGameStart() {
   textSize(20);
   fill(0, 0, 0);
 
-  text("Red platforms kill you, brown platforms", 140, 600);
-  text("will break, and green will make you jump!", 130, 640);
+  text("Red platforms kill you, Brown platforms", 140, 600);
+  text("will break, and Green will make you jump!", 130, 640);
   text("Use W + D or the left and right arrow keys to move!", 85, 680);
   pop();
   push();
-  fill(255);
-  rect(200, 350, 200, 100);
-  pop();
-  push();
-  textSize(22);
-  fill(0);
-  text("Press Start", 246, 406);
-  pop();
+  pressStart.draw();
 }
 
 function drawGamePlay() {
@@ -92,7 +86,7 @@ function drawGamePlay() {
     doodle.x += SPEED;
   }
   if (keyIsDown(39) === true) {
-    doodle.x -= SPEED;
+    doodle.x += SPEED;
   }
 
   doodle.vy = GRAVITY;
@@ -156,11 +150,7 @@ function drawGameEnd() {
   fill("green");
   rect(200, 350, 200, 100);
   pop();
-  push();
-  textSize(22);
-  fill("white");
-  text("Restart", 262, 406);
-  pop();
+  pressReset.draw();
 }
 
 function gameReset() {
