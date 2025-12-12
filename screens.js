@@ -1,4 +1,4 @@
-export class Button {
+export default class Button {
   constructor(x, y, w, h, words, textColor, bubbleColor) {
     this.x = x;
     this.y = y;
@@ -36,3 +36,5 @@ let pressStart = new Button(
   "white"
 );
 let pressReset = new Button(200, 350, 200, 100, "Restart", "white", "red");
+
+export { Button };
