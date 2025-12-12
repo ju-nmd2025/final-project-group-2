@@ -26,7 +26,7 @@ export default class Button {
   }
 }
 
-let pressStart = new Button(
+export let pressStart = new Button(
   200,
   350,
   200,
@@ -35,6 +35,12 @@ let pressStart = new Button(
   "black",
   "white"
 );
-let pressReset = new Button(200, 350, 200, 100, "Restart", "white", "red");
-
-export { Button };
+export let pressReset = new Button(
+  200,
+  350,
+  200,
+  100,
+  "Restart",
+  "white",
+  "red"
+);

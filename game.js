@@ -1,12 +1,13 @@
 import { doodle } from "./doodle.js";
-import platform from "./platform.js";
-import { Button } from "./screens.js";
+import { Platform } from "./platform.js";
+import { pressReset } from "./buttons.js";
+import { pressStart } from "./buttons.js";
 
 let platforms = [];
-let GRAVITY = 8;
+let GRAVITY = 6;
 const JUMP = -300;
 const NUM_PLATFORMS = 10;
-const SPEED = 10;
+const SPEED = 8;
 let startTime;
 let finalScore;
 
@@ -66,7 +67,6 @@ function drawGameStart() {
   push();
   textSize(20);
   fill(0, 0, 0);
-
   text("Red platforms kill you, Brown platforms", 140, 600);
   text("will break, and Green will make you jump!", 130, 640);
   text("Use W + D or the left and right arrow keys to move!", 85, 680);
